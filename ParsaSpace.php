@@ -96,7 +96,7 @@ class ParsaSpace{
     }
 
 
-    public function Upload($domain , $path , $file){
+    public function Upload($domain , $path , $file , $filename= null){
 
 
 
@@ -104,7 +104,7 @@ class ParsaSpace{
         $data = array(
             "domain" => $domain,
             "path" => $path,
-            "file" => curl_file_create($file,'' , '' )
+            "file" => curl_file_create($file, null ,  $filename )
          );
 
 
@@ -132,7 +132,7 @@ class ParsaSpace{
         $curl_error   = curl_error($ch);
 
 
-        var_dump($response);
+        
 
         if ($curl_errno) {
             throw new  HttpException($curl_error, $curl_errno);
